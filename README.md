@@ -91,27 +91,11 @@
  `REMOTE_ADDR`: 访问客服端的ip地址  
  `HTTP_VIA`: 如果有该条信息，说明使用了代理服务器，代理服务器的地址就是后面的值  
  `HTTP_X_FORWARDED_FOR`:如果有该条信息，也说明使用了代理服务器，代理服务器的地址就是后面的值  
- 
-  **没有使用代理服务器的情况：**  
-      REMOTE_ADDR = 您的 IP
-  　　 HTTP_VIA = 没数值或不显示
-  　　 HTTP_X_FORWARDED_FOR = 没数值或不显示  
-  **使用透明代理服务器的情况：Transparent Proxies**  
-  　　 REMOTE_ADDR = 代理服务器 IP
-  　　 HTTP_VIA = 代理服务器 IP
-  　　 HTTP_X_FORWARDED_FOR = 您的真实 IP  
-  **使用普通匿名代理服务器的情况：Anonymous Proxies**  
-  　　 REMOTE_ADDR = 代理服务器 IP
-  　　 HTTP_VIA = 代理服务器 IP
-  　　 HTTP_X_FORWARDED_FOR = 代理服务器 IP  
-  **使用欺骗性代理服务器的情况：Distorting Proxies**  
-  　　 REMOTE_ADDR = 代理服务器 IP
-  　　 HTTP_VIA = 代理服务器 IP
-  　　 HTTP_X_FORWARDED_FOR = 随机的 IP  
-  **使用高匿名代理服务器的情况：High Anonymity Proxies (Elite proxies)**  
-  　　 REMOTE_ADDR = 代理服务器 IP
-  　　 HTTP_VIA = 没数值或不显示
-  　　 HTTP_X_FORWARDED_FOR = 没数值或不显示
+    **没有使用代理服务器的情况：**  REMOTE_ADDR = 您的 IP   HTTP_VIA = 没数值或不显示   HTTP_X_FORWARDED_FOR = 没数值或不显示  
+    **使用透明代理服务器的情况：Transparent Proxies**  REMOTE_ADDR = 代理服务器 IP    HTTP_VIA = 代理服务器 IP   HTTP_X_FORWARDED_FOR = 您的真实 IP  
+    **使用普通匿名代理服务器的情况：Anonymous Proxies**  REMOTE_ADDR = 代理服务器 IP   HTTP_VIA = 代理服务器 IP   HTTP_X_FORWARDED_FOR = 代理服务器 IP  
+    **使用欺骗性代理服务器的情况：Distorting Proxies**  REMOTE_ADDR = 代理服务器 IP   HTTP_VIA = 代理服务器 IP   HTTP_X_FORWARDED_FOR = 随机的 IP  
+    **使用高匿名代理服务器的情况：High Anonymity Proxies (Elite proxies)**  REMOTE_ADDR = 代理服务器 IP   HTTP_VIA = 没数值或不显示   HTTP_X_FORWARDED_FOR = 没数值或不显示
 
 为了保持爬虫的效率，我们需要一个或者一系列代理ip，ip的稳定性也是比较重要的。我们当然可以花钱去买一个，这样是最省事的。有一些网站上也会有免费的代理放出来（百度搜一下代理ip，会有很多），不过这些大部分都是不稳定的，所以我们必须自建一个系统去不断的筛选过滤它们，可以搞一个自己的**ip代理池**：
 
