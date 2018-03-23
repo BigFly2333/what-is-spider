@@ -86,28 +86,28 @@
  
 如何判别一个代理ip是否是匿名或者透明：
 
- 1. 我个人用的比较简单的办法是用这个代理ip去请求http://ip.chinaz.com/getip.aspx（中国电信的检查当前ip的网站），如果显示的当前ip与真实ip相同，则判断它是透明的，否则判定它为匿名的。在实际应用中个人感觉可以简单的判断出匿名和透明，但是没有具体测试过（如有不对望指出）
+ 1. 我个人用的比较简单的办法是用这个代理ip去请求 http://ip.chinaz.com/getip.aspx （中国电信的检查当前ip的网站），如果显示的当前ip与真实ip相同，则判断它是透明的，否则判定它为匿名的。在实际应用中个人感觉可以简单的判断出匿名和透明，但是没有具体测试过（如有不对望指出）
  2. 网上也搜到了一些办法，比较好的是：自建一个简单的服务器，然后用代理ip去访问这个服务器，在服务端对这个请求进行判断，主要的几个字段有：
-`REMOTE_ADDR`: 访问客服端的ip地址
-`HTTP_VIA`: 如果有该条信息，说明使用了代理服务器，代理服务器的地址就是后面的值
-`HTTP_X_FORWARDED_FOR`:如果有该条信息，也说明使用了代理服务器，代理服务器的地址就是后面的值
-    **没有使用代理服务器的情况：**
+ `REMOTE_ADDR`: 访问客服端的ip地址
+ `HTTP_VIA`: 如果有该条信息，说明使用了代理服务器，代理服务器的地址就是后面的值
+ `HTTP_X_FORWARDED_FOR`:如果有该条信息，也说明使用了代理服务器，代理服务器的地址就是后面的值
+  **没有使用代理服务器的情况：**
 　　 REMOTE_ADDR = 您的 IP
 　　 HTTP_VIA = 没数值或不显示
 　　 HTTP_X_FORWARDED_FOR = 没数值或不显示
-    **使用透明代理服务器的情况：Transparent Proxies**
+  **使用透明代理服务器的情况：Transparent Proxies**
 　　 REMOTE_ADDR = 代理服务器 IP
 　　 HTTP_VIA = 代理服务器 IP
 　　 HTTP_X_FORWARDED_FOR = 您的真实 IP
-    **使用普通匿名代理服务器的情况：Anonymous Proxies**
+  **使用普通匿名代理服务器的情况：Anonymous Proxies**
 　　 REMOTE_ADDR = 代理服务器 IP
 　　 HTTP_VIA = 代理服务器 IP
 　　 HTTP_X_FORWARDED_FOR = 代理服务器 IP
-    **使用欺骗性代理服务器的情况：Distorting Proxies**
+  **使用欺骗性代理服务器的情况：Distorting Proxies**
 　　 REMOTE_ADDR = 代理服务器 IP
 　　 HTTP_VIA = 代理服务器 IP
 　　 HTTP_X_FORWARDED_FOR = 随机的 IP
-    **使用高匿名代理服务器的情况：High Anonymity Proxies (Elite proxies)**
+  **使用高匿名代理服务器的情况：High Anonymity Proxies (Elite proxies)**
 　　 REMOTE_ADDR = 代理服务器 IP
 　　 HTTP_VIA = 没数值或不显示
 　　 HTTP_X_FORWARDED_FOR = 没数值或不显示
